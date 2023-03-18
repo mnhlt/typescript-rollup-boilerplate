@@ -1,0 +1,62 @@
+{
+  "name": "type-script-boilerplate",
+  "version": "0.0.0",
+  "description": "Download novel and save to JSON files",
+  "bin": "dist/bin/main.js",
+  "module": "dist/esm/index.js",
+  "browser": "dist/cjs/index.js",
+  "main": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/esm/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "type": "module",
+  "engines": {
+    "node": ">= 18.12 <19"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/jest": "~29.2",
+    "@types/node": "~18",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
+    "eslint": "~8.28",
+    "eslint-config-prettier": "~8.5",
+    "eslint-plugin-jest": "~27.1",
+    "jest": "~29.3",
+    "prettier": "~2.8",
+    "rimraf": "~3.0",
+    "rollup": "^3.19.1",
+    "ts-jest": "~29.0",
+    "tsutils": "~3.21",
+    "typescript": "^4.9.5"
+  },
+  "scripts": {
+    "clean": "rimraf coverage dist tmp",
+    "prebuild": "npm run lint",
+    "build": "rollup -c",
+    "build:watch": "rollup -cw",
+    "build:release": "npm run clean && npm run build",
+    "lint": "eslint . --ext .ts --ext .mts",
+    "test": "jest --coverage",
+    "prettier": "prettier --config .prettierrc --write .",
+    "test:watch": "jest --watch"
+  },
+  "author": "mnhlt",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "tslib": "~2.4"
+  },
+  "volta": {
+    "node": "18.12.1"
+  }
+}
